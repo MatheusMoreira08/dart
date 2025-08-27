@@ -1,24 +1,28 @@
 void main() {
+  int coelhosJovens = 0;
+  int coelhosAdultos = 2;
 
-int coelhos_jovens = 2;
-int coelhos_adultos = 0;
-int coelhos_total = 0;
-
-print('População de Coelhos');
+  print('\n');
+  print('                       População de Coelhos \n');
 
   // loop de meses
-for (var i = 1; i < 13; i++) {
+  for (int mesAtual = 1; mesAtual <= 25; mesAtual++) {
+    // Calcula a população total de coelhos
+    coelhosAdultos += coelhosJovens;
+    coelhosJovens = coelhosAdultos;
 
-  int mes_atual = i;
-  // Calcula a população total de coelhos
-  coelhos_adultos += coelhos_jovens;
-  coelhos_jovens = coelhos_adultos;
-  coelhos_total = coelhos_jovens + coelhos_adultos;
+    if (mesAtual > 12) {
+      coelhosAdultos = (coelhosAdultos * 0.25).floor();
+      coelhosJovens = (coelhosJovens * 0.25).floor();
+    }
 
+    if (mesAtual == 13) {
+      print('\n A partir do mês 13, 25% da população de coelhos morre a cada mês.');
+    }
 
-  // Exibe o resultado do mês atual
-  print('Fim do mês $mes_atual: população total de ${coelhos_total} coelhos, $coelhos_jovens coelhos jovens e $coelhos_adultos coelhos adultos.');
-
-
-}
+    // Exibe o resultado do mês atual
+    print(
+      'Fim do mês $mesAtual: população total de ${coelhosJovens + coelhosAdultos} coelhos, $coelhosJovens coelhos jovens e $coelhosAdultos coelhos adultos.',
+    );
+  }
 }
